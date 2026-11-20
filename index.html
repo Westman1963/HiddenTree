@@ -16039,7 +16039,7 @@ No changes from previous generation.</div>
             <!-- Header Banner (Photo shown automatically for Top 6 Spotlight players) -->
             <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white p-5 flex items-center justify-between">
                 <div class="flex items-center gap-4">
-                    <template x-if="showPhoto && activePlayer">
+                    <<template x-if="activePlayer">
                         <div class="w-20 h-20 rounded-full bg-slate-800 border-2 border-amber-400 overflow-hidden flex items-center justify-center shrink-0 shadow-lg">
                             <img x-show="activePlayer.photo" :src="activePlayer.photo" :alt="activePlayer.n"
                                  class="w-full h-full object-cover">
