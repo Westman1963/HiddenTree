@@ -19,6 +19,12 @@
 </head>
 <body class="bg-gray-100 text-gray-800">
 <div class="pc-container" x-data="dfsDashboardApp('tab1')" x-init="enhancePlainPlayerLinks()">
+    <!-- Small Live Deployment Date & Time Stamp -->
+    <div class="flex items-center justify-between text-[11px] text-slate-500 px-1 mb-1.5 font-medium">
+        <span>Master DFS Dashboard • v1.8</span>
+        <span>Last Updated: <strong class="text-slate-700">Nov 21, 2026 at 08:42:48 AM</strong></span>
+    </div>
+
     <!-- Navigation Tabs -->
     <div class="flex border-b-2 border-gray-300 mb-6 bg-white rounded-t-lg shadow-sm overflow-hidden">
         
@@ -15996,15 +16002,15 @@ No changes from previous generation.</div>
                     </div>
                     
 
-    <!-- Interactive Player History & Top-6 Photo Spotlight Popup Modal -->
+    <!-- Interactive Player History & Photo Spotlight Popup Modal -->
     <div x-show="modalOpen" x-transition.opacity style="display: none;"
          class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/70 backdrop-blur-xs p-4"
          @click.self="modalOpen = false" @keydown.escape.window="modalOpen = false">
         <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full overflow-hidden border border-slate-200">
-            <!-- Header Banner (Photo shown automatically for Top 6 Spotlight players) -->
+            <!-- Header Banner -->
             <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white p-5 flex items-center justify-between">
                 <div class="flex items-center gap-4">
-                    <<template x-if="activePlayer">
+                    <template x-if="activePlayer">
                         <div class="w-20 h-20 rounded-full bg-slate-800 border-2 border-amber-400 overflow-hidden flex items-center justify-center shrink-0 shadow-lg">
                             <img x-show="activePlayer.photo" :src="activePlayer.photo" :alt="activePlayer.n"
                                  class="w-full h-full object-cover">
@@ -16084,6 +16090,11 @@ No changes from previous generation.</div>
             </div>
         </div>
     </div>
+
+    <!-- Subtle Footer Timestamp -->
+    <footer class="mt-8 pt-3 border-t border-gray-200 text-center text-[11px] text-gray-400">
+        Published Nov 21, 2026 at 08:42:48 AM • Data powered by nflverse (1999–Present)
+    </footer>
 </div>
 
 <script>
@@ -16106,7 +16117,6 @@ function dfsDashboardApp(defaultTab) {
                 .trim();
         },
         enhancePlainPlayerLinks() {
-            // Automatically turns any plain-text player cells in Optimizer tables into clickable links
             if (!this.historyCache || Object.keys(this.historyCache).length === 0) return;
             document.querySelectorAll('.pc-display-table tbody tr').forEach(tr => {
                 const cells = tr.querySelectorAll('td');
